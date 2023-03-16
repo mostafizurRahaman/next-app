@@ -19,9 +19,12 @@
 -  Next Js folder structure
 -  File Based Routing
 -  Dynamic Routing and Nested Routing
--  SSG , SSR, CSR
+-  SSG - Static Side Generation
+-  SSR - Sever Side Rendering
+-  CSR - Client Side Rendering
 -  getStaticProps() , getStaticPaths(), getServerSideProps()
--  useRouter() hook on next js
+-  useRouter()
+-  <Image> , <Link>, <Header> tags
 
 ### getStaticProps:- For data load :
 
