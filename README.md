@@ -5,6 +5,10 @@
 -  It helps me to explore next js more and grow my abilities to handle errors of
    next js.
 
+## Important Links: 
+- Github Repository:- https://github.com/mostafizurRahaman/next-app
+- App Live Link:- https://next-app-gray-gamma.vercel.app/
+
 ## ** Used Technologies In Next Js **
 
 -  React Js
@@ -25,6 +29,7 @@
 -  getStaticProps() , getStaticPaths(), getServerSideProps()
 -  useRouter()
 -  <Image> , <Link>, <Header> tags
+- Next App Deploy on vercel 
 
 ### getStaticProps:- For data load :
 
