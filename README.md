@@ -1,38 +1,117 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ** My First Next App **
 
-## Getting Started
+-  React-Next-application is an practicing application that I developed for my
+   practice of next.
+-  It helps me to explore next js more and grow my abilities to handle errors of
+   next js.
 
-First, run the development server:
+## ** Used Technologies In Next Js **
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+-  React Js
+-  Next Js
+-  Javascript
+-  Tailwind CSS
+-  Daisy UI
+
+## ** What I learn **
+
+-  Difference between React and Next js
+-  Next Js folder structure
+-  File Based Routing
+-  Dynamic Routing and Nested Routing
+-  SSG , SSR, CSR
+-  getStaticProps() , getStaticPaths(), getServerSideProps()
+-  useRouter() hook on next js
+
+### getStaticProps:- For data load :
+
+```
+   const getStaticProps = async() => {
+      const res = await fetch('url);
+      const data = await res.json();
+
+      return {
+         props: {
+            dataName : data,
+         }
+      }
+   }
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### getStaticPaths:-
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+   const getStaticPaths = async() => {
+      const res = await fetch('url);
+      const data = await res.json();
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+      const paths = data.map(m => {
+         return {
+            params: {
+               id: ${m.id} // it's for all id
+            }
+         }
+      })
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+      return {
+         paths,
+         fallback: false, // the route goes shoes  404 page if data not found.
+      }
+   }
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
 
-## Learn More
+### getStaticProps:- For single id data load :
 
-To learn more about Next.js, take a look at the following resources:
+```
+   const getStaticProps = async(context) => {
+      const {params} = context;
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+      const res = await fetch(`https://localhost:5000/datas?id=${params.id}`);
+      const data = await res.json();
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+      return {
+         props: {
+            dataName : data,
+         }
+      }
+   }
 
-## Deploy on Vercel
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### getServerSideProps:-
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+   const getServerSideProps = async() => {
+      const res = await fetch('url);
+      const data = await res.json();
+
+      return {
+         props: {
+            dataName : data,
+         }
+      }
+   }
+
+```
+
+### useRouter() : use Router hook give us an object with router information like : path, params, base address or more properties.
+
+```
+const MealDetails = ({ meal }) => {
+   const router = useRouter();
+   const id = router.query.mealId;
+   console.log(router);
+   return (
+      <div className="flex items-center justify-center min-h-screen ">
+
+         <div className="w-[500px] ">
+         <h2 className="text-xl font-bold text-red-500 uppercase mb-5 text-center ">The meal Id is: #{id}</h2>
+            <Meal meal={meal}></Meal>
+         </div>
+      </div>
+   );
+};
+
+```
